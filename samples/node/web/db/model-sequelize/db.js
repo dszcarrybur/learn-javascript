@@ -111,7 +111,7 @@ var exp = {
         }
     }
 };
-
+//TYPES应该是const全局变量，包括各种可能的Sequelize数据库存储类型；且此处为models中name: db.STRING(100)这种用法的调用源头，将db.XX转化为Sequelize.XX
 for (let type of TYPES) {
     exp[type] = Sequelize[type];
 }
