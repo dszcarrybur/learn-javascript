@@ -1,4 +1,4 @@
-
+//数据相关配置参数
 var config = {
     database: 'test',
     username: 'www',
