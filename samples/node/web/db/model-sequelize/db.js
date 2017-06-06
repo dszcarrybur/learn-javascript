@@ -5,14 +5,14 @@ const uuid = require('node-uuid');
 const config = require('./config');
 
 console.log('init sequelize...');
-
-function generateId() {
-    return uuid.v4();
+//UUID 的目的是让分布式系统中的所有元素，都能有唯一的辨识资讯，而不需要透过中央控制端来做辨识资讯的指定。
+function generateId() {//如此一来，每个人都可以建立不与其它人冲突的 UUID。在这样的情况下，就不需考虑数据库建立时的名称重复问题。
+    return uuid.v4();//v1 是基于时间戳生成uuid,v4是随机生成uuid
 }
 
 var sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
-    dialect: config.dialect,
+    dialect: config.dialect,//数据库服务名称
     pool: {
         max: 5,
         min: 0,
