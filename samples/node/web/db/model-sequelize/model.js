@@ -15,7 +15,7 @@ for (let f of js_files) {
     let name = f.substring(0, f.length - 3);
     module.exports[name] = require(__dirname + '/models/' + f);
 }
-
+//增加一个同步操作，设置当前允许环境为production，在init-db中调用model.sync();，协助自动生成数据库
 module.exports.sync = () => {
     db.sync();
 };
