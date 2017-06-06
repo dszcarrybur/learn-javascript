@@ -10,6 +10,7 @@ const app = new Koa();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+//获取开始时间截止时间及url
 // log request URL:
 app.use(async (ctx, next) => {
     console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
