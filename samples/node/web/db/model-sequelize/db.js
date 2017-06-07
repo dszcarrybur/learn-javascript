@@ -105,7 +105,7 @@ var exp = {
     sync: () => {///添加某同步函数，test环境中可能调用
         // only allow create ddl in non-production environment:仅在非生产环境中执行create dll操作，即是根据models新建数据库表
         if (process.env.NODE_ENV !== 'production') {
-            sequelize.sync({ force: true });//不是生产环境时，设置force为true，可能是指假如没有对应数据库，则强制生成一个合适的数据库表
+            sequelize.sync({ force: true });//Sequelize提供的sync()方法，可以自动创建数据库，设置force为true，可能是指假如没有对应数据库，则强制生成一个合适的数据库表
         } else {
             throw new Error('Cannot sync() when NODE_ENV is set to \'production\'.');
         }
