@@ -2,11 +2,11 @@ const assert = require('assert');
 
 const sum = require('../hello');
 
-describe('#hello.js', () => {
+describe('#hello.js', () => {//describe的第一个参数是为了将各个用例以树的形式组织起来
 
     describe('#sum()', () => {
         before(function () {
-            console.log('before:');
+            console.log('before:');///标注执行顺序father-before>son-describe>son-before>father-beforeEach>son-beforeEach,即同类型标注父节点描述包围子节点的，即before更早，after更晚
         });
 
         after(function () {
@@ -22,7 +22,7 @@ describe('#hello.js', () => {
         });
 
         it('sum() should return 0', () => {
-            assert.strictEqual(sum(), 0);
+            assert.strictEqual(sum(), 0);//直接调用node自带的判断库assert模块
         });
 
         it('sum(1) should return 1', () => {
