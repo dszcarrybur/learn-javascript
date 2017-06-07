@@ -1,6 +1,6 @@
 const model = require('./model');
 
-let
+let//分别引入model中的各个实例数据类型
     Pet = model.Pet,
     User = model.User;
 
@@ -26,4 +26,4 @@ let
         birth: '2008-08-08',
     });
     console.log('created: ' + JSON.stringify(dog));
-})();
+})();//新建匿名异步函数“async ()”，传入参数为空“（）”，并立即执行。其中新建匿名函数的方式是使用箭头函数新建方式。
