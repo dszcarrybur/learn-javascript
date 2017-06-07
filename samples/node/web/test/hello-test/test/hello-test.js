@@ -2,8 +2,8 @@ const assert = require('assert');
 
 const sum = require('../hello');
 
-describe('#hello.js', () => {//describe的第一个参数是为了将各个用例以树的形式组织起来
-
+describe('#hello.js', () => {//describe即为mocha的函数，此次默认导入了mocha模块，所有test脚步均默认放在test文件目录下，其会默认执行该目录的测试脚本
+// 其describe的第一个参数是为了将各个用例以树的形式组织起来
     describe('#sum()', () => {
         before(function () {
             console.log('before:');///标注执行顺序father-before>son-describe>son-before>father-beforeEach>son-beforeEach,即同类型标注父节点描述包围子节点的，即before更早，after更晚
