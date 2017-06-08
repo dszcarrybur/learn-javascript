@@ -11,9 +11,10 @@ app.use(async (ctx, next) => {
 });
 
 app.use(async (ctx, next) => {
-    var name = ctx.request.query.name || 'world';
+    var name = ctx.request.query.name || 'world';///其中ctx.request.query.xxx，其中query是获取请求path中“？”后的参数xxx及其参数值，如“/path?name=Bob”
     ctx.response.type = 'text/html';
     ctx.response.body = `<h1>Hello, ${name}!</h1>`;
 });
 
-module.exports = app;
+module.exports = app;///因需做http单元测试，故需将app.listen放在另外一个文件启动
+
