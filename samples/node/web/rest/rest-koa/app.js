@@ -30,7 +30,7 @@ app.use(templating('views', {
 }));
 
 // bind .rest() for ctx:
-app.use(rest.restify());
+app.use(rest.restify());/// 添加api执行出问题的报错代码执行相关逻辑
 
 // add controllers:
 app.use(controller());
