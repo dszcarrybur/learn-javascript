@@ -11,24 +11,24 @@
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/vue.js"></script>
     <script>
-
-$(function () {
-    var vm = new Vue({
-        el: '#vm',
+////在<head>内部编写的JavaScript代码，需要用jQuery把MVVM的初始化代码推迟到页面加载完毕后执行，否则，直接在<head>内执行MVVM代码时，DOM节点尚未被浏览器加载，初始化将失败
+$(function () {///因此此处在核心执行代码外加了个$(function () {....});,应该是指新建一个匿名函数并在html加载完成后执行初始化。
+    var vm = new Vue({//双向绑定最大的好处是我们不再需要用jQuery去查询表单的状态，而是直接获得了用JavaScript对象表示的Model
+        el: '#vm',///el指定了要把Model绑定到哪个DOM根节点上，语法和jQuery类似。这里的'#vm'对应ID为vm的一个<div>节点
         data: {
-            email: '',
-            password: '',
-            birth: '',
+            email: '',////可通过{{email}}进行单向绑定model->view，也可以通过v-text="name"进行单向绑定；还可以通过id=“vm”且v-model="email"进行双向绑定，
+            password: '',/////如果属性关联的是对象，还可以用多个.引用，例如，{{ address.zipcode }}
+            birth: '',///js中调用model值调用方法：vm.birh,或window.vm.birth，假如birth是对象，也可以是vm.birh.xxx
             gender: 's',
-            language: ['zh'],
-            city: 'bj',
+            language: ['zh'],///多个checkbox可以和数组绑定
+            city: 'bj',///下拉框<select>绑定的是字符串，但是要注意，绑定的是value而非用户看到的文本
             introduction: '',
-            subscribe: true
+            subscribe: true////单个checkbox可以和boolean类型变量绑定
         },
         methods: {
-            register: function () {
+            register: function () {//绑定的表单form处理函数
                 $('#modal-data').text(JSON.stringify(this.$data, null, '    '));
-                $('#modal').modal();
+                $('#modal').modal();//bootstrap中返回modal数据给server的函数
                 // TODO: post JSON data to server...
             }
         }
