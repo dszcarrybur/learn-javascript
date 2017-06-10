@@ -24,19 +24,19 @@ $(function () {
         http: {
             timeout: 5000
         },
-        data: {
+        data: {///会被捆绑的变量
             title: 'TODO List',
             todos: [],
             loading: false
         },
-        created: function () {
+        created: function () {///开始页面时便执行该函数
             this.init();
         },
-        methods: {
+        methods: {///会被捆绑的方法
             init: function () {
-                var that = this;
+                var that = this;///为防止this被调用出错，将当前vm.data对象赋值给that
                 that.loading = true;
-                that.$resource('/api/todos').get().then(function (resp) {
+                that.$resource('/api/todos').get().then(function (resp) {///promise格式调用，使用resource方法和服务器api通讯，代替ajax
                     that.loading = false;
                     resp.json().then(function (result) {
                         that.todos = result.todos;
@@ -93,7 +93,7 @@ $(function () {
     });
     window.vm = vm;
 
-    var vmAdd = new Vue({
+    var vmAdd = new Vue({///再新建一个vue对象，绑定add表单
         el: '#vmAdd',
         data: {
             name: '',
