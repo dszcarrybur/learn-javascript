@@ -16,9 +16,9 @@ $(function () {
         el: '#vm',
         data: {
             title: 'TODO List',
-            todos: [
-                {
-                    name: 'Learn Git',
+            todos: [///此处要使todos的改变映射到view上，其只能检测修改和增删，不能检测赋值操作，如vm.todos[0] = {name: 'New name',description: 'New description'};
+                {//正确的同步dom修改方法一是直接赋修改值vm.todos[0].name = 'New name';，二是调用todos，其List类型变量的splice、push、unshift等方法调用，Vue可以监听该类方法
+                    name: 'Learn Git',///如通过splice()方法，删除某个元素后，再添加一个元素，达到“赋值”的效果；再或是直接通过push添加新元素，均可以正确更新View。
                     description: 'Learn how to use git as distributed version control'
                 },
                 {
@@ -84,7 +84,7 @@ function executeJs() {
                         <div id="vm">
                             <h3>{{ title }}</h3>
                             <ol>
-                                <li v-for="t in todos">
+                                <li v-for="t in todos"><!--和vm.todos绑定，自动更新dl数量，此处类似于"for e in list："-->
                                     <dl>
                                         <dt>{{ t.name }}</dt>
                                         <dd>{{ t.description }}</dd>
