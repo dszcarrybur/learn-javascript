@@ -4,10 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="learn javascript by www.liaoxuefeng.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--以上为使用bootstrp必须声明的内容-->
+    <meta name="description" content="learn javascript by carrybur">
+    <meta name="renderer" content="webkit">
+    <!--让国内的各种有两种访问方式的浏览器默认使用高速模式加载-->
     <title>{{ title }}</title>
+    <!--title是nunjunks是由controller中的render传过来的值填写的-->
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <script src="/static/js/bootstrap.js"></script>
+    <!--如上是导入bootstrp的必须操作，假如是有部署有Nginx，则由nginx导入bootstrp的css及js文件-->
 </head>
 
 <body>
